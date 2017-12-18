@@ -17,6 +17,10 @@ namespace PlugIns
         private IOutput output = null;
         public void ConnectToOperator(object date)
         {
+            if (output == null)
+            {
+                throw new NullReferenceException("Invalid IOutput injected into KievStarSimCard obj");
+            }
             output.WriteLine($"{ToString()} operator is connected.");
         }
 

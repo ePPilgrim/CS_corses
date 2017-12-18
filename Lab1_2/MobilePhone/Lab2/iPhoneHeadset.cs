@@ -16,6 +16,10 @@ namespace PlugIns
         private IOutput output = null;
         public void Play(object data)
         {
+            if (output == null)
+            {
+                throw new NullReferenceException("Invalid IOutput injected into iPhoneHeadset obj");
+            }
             output.WriteLine($"{ToString()} play sound.");
         }
 

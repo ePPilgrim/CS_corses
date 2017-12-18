@@ -48,6 +48,7 @@
     <Compile Include="ISimCard.cs" />
     <Compile Include="KievStarSimCard.cs" />
     <Compile Include="LifeSimCard.cs" />
+    <Compile Include="MockOutput.cs" />
     <Compile Include="PhoneSpeaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SamsungChargeUnit.cs" />

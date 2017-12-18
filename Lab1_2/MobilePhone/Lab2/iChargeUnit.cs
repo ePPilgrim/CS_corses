@@ -16,7 +16,11 @@ namespace PlugIns
         private IOutput output = null;
         public void ChargeBattery(object data)
         {
-            output?.WriteLine($"{ToString()} is charging phone.");
+            if(output == null)
+            {
+                throw new NullReferenceException("Invalid IOutput injected into iChargeUnit obj");
+            }
+            output.WriteLine($"{ToString()} is charging phone.");
         }
         public override string ToString()
         {

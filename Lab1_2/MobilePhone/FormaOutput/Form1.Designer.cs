@@ -1,4 +1,8 @@
-﻿namespace FormaOutput
+﻿using MobilePhone;
+using PlugIns;
+using System.Collections.Generic;
+
+namespace FormaOutput
 {
     partial class Form1
     {
@@ -33,16 +37,15 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +72,7 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "SamsungHeadset";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -80,6 +84,7 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "UnofficialyPhoneHeadset";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // radioButton4
             // 
@@ -91,11 +96,10 @@
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "PhoneSpeaker";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.richTextBox1);
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.radioButton4);
             this.groupBox1.Controls.Add(this.radioButton3);
@@ -103,28 +107,10 @@
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Location = new System.Drawing.Point(7, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(211, 325);
+            this.groupBox1.Size = new System.Drawing.Size(211, 148);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Playback";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(17, 188);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(178, 114);
-            this.richTextBox1.TabIndex = 6;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(30, 139);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 24);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Apply";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -135,37 +121,36 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Select playback component:";
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(12, 182);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(423, 182);
+            this.richTextBox1.TabIndex = 6;
+            this.richTextBox1.Text = "";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(224, 136);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 31);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Apply";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.richTextBox2);
-            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.radioButton6);
             this.groupBox2.Controls.Add(this.radioButton7);
             this.groupBox2.Controls.Add(this.radioButton8);
             this.groupBox2.Location = new System.Drawing.Point(224, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(211, 325);
+            this.groupBox2.Size = new System.Drawing.Size(211, 126);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Charge";
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Location = new System.Drawing.Point(17, 188);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(178, 114);
-            this.richTextBox2.TabIndex = 6;
-            this.richTextBox2.Text = "";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(30, 139);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 24);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Apply";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -186,6 +171,7 @@
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "UnofficialyChargeUnit";
             this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
             // 
             // radioButton7
             // 
@@ -197,6 +183,7 @@
             this.radioButton7.TabStop = true;
             this.radioButton7.Text = "SamsungChargeUnit";
             this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
             // 
             // radioButton8
             // 
@@ -208,12 +195,26 @@
             this.radioButton8.TabStop = true;
             this.radioButton8.Text = "iChargeUnit";
             this.radioButton8.UseVisualStyleBackColor = true;
+            this.radioButton8.CheckedChanged += new System.EventHandler(this.radioButton8_CheckedChanged);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(334, 136);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(101, 31);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Clear";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 376);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -227,6 +228,26 @@
 
         }
 
+        private void InitializeMobilePhone()
+        {
+            output = new WinFormOutput(richTextBox1);
+            myMobilePhone = new SimCorpMobilePhone(output);
+            playbacks = new List<object>
+            {
+                new iPhoneHeadset(output),
+                new SamsungHeadset(output),
+                new UnofficialHeadset(output),
+                new PhoneSpeaker(output)
+            };
+
+            chargeUnits = new List<object>
+            {
+                new iChargeUnit(output),
+                new SamsungChargeUnit(output),
+                new UnofficialChargeUnit(output)
+            };
+        }
+
         #endregion
 
         private System.Windows.Forms.RadioButton radioButton1;
@@ -238,12 +259,18 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.RadioButton radioButton8;
+
+        private WinFormOutput output;
+        private BaseMobilePhone myMobilePhone;
+        List<object> playbacks;
+        List<object> chargeUnits;
+        object curPlayback = null;
+        object curChargeUnit = null;
+        private System.Windows.Forms.Button button2;
     }
 }
 
