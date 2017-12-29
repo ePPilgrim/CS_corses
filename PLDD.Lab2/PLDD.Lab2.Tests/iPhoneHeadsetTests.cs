@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MobilePhonePlugin;
-using OutputInfo;
+using PLDD.Lab2.MobilePhonePlugin;
+using PLDD.Lab2.OutputInfo;
 using System;
 
 namespace PlugIns.Tests

@@ -1,8 +1,8 @@
-﻿using MobilePhone;
-using MobilePhonePlugin;
+﻿using PLDD.Lab2.MobilePhone;
+using PLDD.Lab2.MobilePhonePlugin;
 using System.Collections.Generic;
 
-namespace FormaOutput
+namespace PLDD.Lab2.FormaOutput
 {
     partial class Form1
     {

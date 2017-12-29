@@ -1,7 +1,7 @@
 ﻿using System;
-using OutputInfo;
+using PLDD.Lab2.OutputInfo;
 
-namespace MobilePhonePlugin
+namespace PLDD.Lab2.MobilePhonePlugin
 {
     public class iChargeUnit : ICharge
     {

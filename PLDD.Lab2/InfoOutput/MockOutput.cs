@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace OutputInfo
+namespace PLDD.Lab2.OutputInfo
 {
     public class MockOutput : IOutput
     {

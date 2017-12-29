@@ -1,4 +1,4 @@
-﻿namespace OutputInfo
+﻿namespace PLDD.Lab2.OutputInfo
 {
     public interface IOutput
     {

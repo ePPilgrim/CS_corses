@@ -1,4 +1,4 @@
-﻿using MobilePhonePlugin;
+﻿using PLDD.Lab2.MobilePhonePlugin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FormaOutput
+namespace PLDD.Lab2.FormaOutput
 {
     public partial class Form1 : Form
     {

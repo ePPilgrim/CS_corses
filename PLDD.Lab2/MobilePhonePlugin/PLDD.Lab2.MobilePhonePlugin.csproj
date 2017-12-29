@@ -7,8 +7,8 @@
     <ProjectGuid>{11B2CA69-4EBD-4122-B6AA-0D90F38D6668}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MobilePhonePlugin</RootNamespace>
-    <AssemblyName>MobilePhonePlugin</AssemblyName>
+    <RootNamespace>PLDD.Lab2.MobilePhonePlugin</RootNamespace>
+    <AssemblyName>PLDD.Lab2.MobilePhonePlugin</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -56,9 +56,9 @@
     <Compile Include="VodafoneSimCard.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InfoOutput\OutputInfo.csproj">
+    <ProjectReference Include="..\InfoOutput\PLDD.Lab2.OutputInfo.csproj">
       <Project>{b2ef4df0-45da-44e6-acfd-11f16302860c}</Project>
-      <Name>OutputInfo</Name>
+      <Name>PLDD.Lab2.OutputInfo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

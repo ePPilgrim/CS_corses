@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F25DA781-8559-499A-A4BF-49AC723840A5}</ProjectGuid>
+    <ProjectGuid>{B2EF4DF0-45DA-44E6-ACFD-11F16302860C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MobilePhone</RootNamespace>
-    <AssemblyName>MobilePhone</AssemblyName>
+    <RootNamespace>PLDD.Lab2.OutputInfo</RootNamespace>
+    <AssemblyName>PLDD.Lab2.OutputInfo</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,18 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SimCorpMobilePhone.cs" />
+    <Compile Include="IOutput.cs" />
+    <Compile Include="MockOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\InfoOutput\OutputInfo.csproj">
-      <Project>{b2ef4df0-45da-44e6-acfd-11f16302860c}</Project>
-      <Name>OutputInfo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MobilePhonePlugin\MobilePhonePlugin.csproj">
-      <Project>{11b2ca69-4ebd-4122-b6aa-0d90f38d6668}</Project>
-      <Name>MobilePhonePlugin</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -57,13 +57,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InfoOutput\OutputInfo.csproj">
+    <ProjectReference Include="..\InfoOutput\PLDD.Lab2.OutputInfo.csproj">
       <Project>{b2ef4df0-45da-44e6-acfd-11f16302860c}</Project>
-      <Name>OutputInfo</Name>
+      <Name>PLDD.Lab2.OutputInfo</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MobilePhonePlugin\MobilePhonePlugin.csproj">
+    <ProjectReference Include="..\MobilePhonePlugin\PLDD.Lab2.MobilePhonePlugin.csproj">
       <Project>{11b2ca69-4ebd-4122-b6aa-0d90f38d6668}</Project>
-      <Name>MobilePhonePlugin</Name>
+      <Name>PLDD.Lab2.MobilePhonePlugin</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

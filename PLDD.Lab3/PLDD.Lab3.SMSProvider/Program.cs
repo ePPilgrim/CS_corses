@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PLDD.Lab2.FormaOutput
+namespace PLDD.Lab3.SMSProvider
 {
     static class Program
     {

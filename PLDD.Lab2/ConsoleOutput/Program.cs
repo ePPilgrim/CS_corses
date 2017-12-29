@@ -1,11 +1,11 @@
-﻿using MobilePhone;
-using MobilePhonePlugin;
-using OutputInfo;
+﻿using PLDD.Lab2.MobilePhone;
+using PLDD.Lab2.MobilePhonePlugin;
+using PLDD.Lab2.OutputInfo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ConsoleMobilePhone
+namespace PLDD.Lab2.ConsoleMobilePhone
 {
     class Program
     {

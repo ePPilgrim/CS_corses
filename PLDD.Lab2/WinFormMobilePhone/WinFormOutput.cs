@@ -1,7 +1,7 @@
-﻿using OutputInfo;
+﻿using PLDD.Lab2.OutputInfo;
 using System.Windows.Forms;
 
-namespace FormaOutput
+namespace PLDD.Lab2.FormaOutput
 {
     public class WinFormOutput : IOutput
     {

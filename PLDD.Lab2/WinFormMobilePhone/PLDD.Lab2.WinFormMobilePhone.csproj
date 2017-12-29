@@ -7,8 +7,8 @@
     <ProjectGuid>{52337E23-9416-4C74-ABEF-53C60A3FD680}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FormaOutput</RootNamespace>
-    <AssemblyName>FormaOutput</AssemblyName>
+    <RootNamespace>PLDD.Lab2.FormaOutput</RootNamespace>
+    <AssemblyName>PLDD.Lab2.FormaOutput</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -66,6 +66,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -81,17 +82,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InfoOutput\OutputInfo.csproj">
+    <ProjectReference Include="..\InfoOutput\PLDD.Lab2.OutputInfo.csproj">
       <Project>{b2ef4df0-45da-44e6-acfd-11f16302860c}</Project>
-      <Name>OutputInfo</Name>
+      <Name>PLDD.Lab2.OutputInfo</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MobilePhonePlugin\MobilePhonePlugin.csproj">
+    <ProjectReference Include="..\MobilePhonePlugin\PLDD.Lab2.MobilePhonePlugin.csproj">
       <Project>{11b2ca69-4ebd-4122-b6aa-0d90f38d6668}</Project>
-      <Name>MobilePhonePlugin</Name>
+      <Name>PLDD.Lab2.MobilePhonePlugin</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MobilePhone\MobilePhone.csproj">
-      <Project>{2a9733ad-1859-4c30-8a97-5ee2f6b80876}</Project>
-      <Name>MobilePhone</Name>
+    <ProjectReference Include="..\MobilePhone\PLDD.Lab2.MobilePhone.csproj">
+      <Project>{F25DA781-8559-499A-A4BF-49AC723840A5}</Project>
+      <Name>PLDD.Lab2.MobilePhone</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

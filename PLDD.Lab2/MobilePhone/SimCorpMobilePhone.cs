@@ -1,8 +1,8 @@
-﻿using MobilePhonePlugin;
-using OutputInfo;
+﻿using PLDD.Lab2.MobilePhonePlugin;
+using PLDD.Lab2.OutputInfo;
 using System;
 
-namespace MobilePhone
+namespace PLDD.Lab2.MobilePhone
 {
     public class SimCorpMobilePhone
     {

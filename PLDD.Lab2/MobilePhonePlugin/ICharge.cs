@@ -1,5 +1,5 @@
 ﻿
-namespace MobilePhonePlugin
+namespace PLDD.Lab2.MobilePhonePlugin
 {
     public interface ICharge
     {

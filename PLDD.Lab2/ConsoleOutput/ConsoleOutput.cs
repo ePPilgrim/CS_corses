@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OutputInfo
+namespace PLDD.Lab2.OutputInfo
 {
     public class ConsoleOutput : IOutput
     {

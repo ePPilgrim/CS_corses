@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B2EF4DF0-45DA-44E6-ACFD-11F16302860C}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{20455E86-96D2-49EA-8CA7-34237C04D187}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OutputInfo</RootNamespace>
-    <AssemblyName>OutputInfo</AssemblyName>
+    <RootNamespace>PLDD.Lab2.ConsoleMobilePhone</RootNamespace>
+    <AssemblyName>PLDD.Lab2.ConsoleMobilePhone</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,9 +43,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IOutput.cs" />
-    <Compile Include="MockOutput.cs" />
+    <Compile Include="ConsoleOutput.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InfoOutput\PLDD.Lab2.OutputInfo.csproj">
+      <Project>{B2EF4DF0-45DA-44E6-ACFD-11F16302860C}</Project>
+      <Name>PLDD.Lab2.OutputInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MobilePhonePlugin\PLDD.Lab2.MobilePhonePlugin.csproj">
+      <Project>{11b2ca69-4ebd-4122-b6aa-0d90f38d6668}</Project>
+      <Name>PLDD.Lab2.MobilePhonePlugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MobilePhone\PLDD.Lab2.MobilePhone.csproj">
+      <Project>{f25da781-8559-499a-a4bf-49ac723840a5}</Project>
+      <Name>PLDD.Lab2.MobilePhone</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
