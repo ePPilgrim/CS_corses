@@ -24,16 +24,14 @@ namespace PLDD.Lab3.SMSProvider
 
         public delegate void SubscribeMobPhone(MobilePhone mobPhone);
         public delegate void UnsubscribeMobPhone();
-        public delegate string FormatMessage(string text);
 
         private event SubscribeMobPhone vSubscribeMobPhone = null;
         private event UnsubscribeMobPhone vUnsubscribeMobPhone = null;
         private event EventHandler vKickOffSmsGenerator = null;
-        private event FormatMessage vFormatMessage = null;
 
         private MobilePhone vMobPhone = null;
         private SMSGenerator vSmsGenerator;
-        private Func<string, string>[] vFormatFunc;
+        
 
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.RichTextBox richTextBox1;
@@ -62,9 +60,9 @@ namespace PLDD.Lab3.SMSProvider
             "End with [Date Time]",
             "Lowercase",
             "Uppercase"});
-            this.comboBox1.Location = new System.Drawing.Point(19, 22);
+            this.comboBox1.Location = new System.Drawing.Point(19, 12);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(129, 21);
+            this.comboBox1.Size = new System.Drawing.Size(377, 21);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.Text = "Select Formatting";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
@@ -73,7 +71,7 @@ namespace PLDD.Lab3.SMSProvider
             // 
             this.richTextBox1.Location = new System.Drawing.Point(19, 88);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(251, 287);
+            this.richTextBox1.Size = new System.Drawing.Size(377, 287);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -100,9 +98,9 @@ namespace PLDD.Lab3.SMSProvider
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(154, 22);
+            this.button3.Location = new System.Drawing.Point(280, 49);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 20);
+            this.button3.Size = new System.Drawing.Size(116, 29);
             this.button3.TabIndex = 4;
             this.button3.Text = "Cleare";
             this.button3.UseVisualStyleBackColor = true;
@@ -112,7 +110,7 @@ namespace PLDD.Lab3.SMSProvider
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 387);
+            this.ClientSize = new System.Drawing.Size(408, 387);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -122,13 +120,12 @@ namespace PLDD.Lab3.SMSProvider
             this.Text = "Message Formating";
             this.ResumeLayout(false);
 
-            initDelegates();
-            initFormatDelegatHandlers();
         }
 
         private void initDelegates() {
             vMobPhone = new MobilePhone();
             vMobPhone.SmsProvider.SMSReceived += new SMSProvider.SMSRecievedDelegate(OnSmsReceived);
+            vMobPhone.SmsProvider.SetFormatMode(SMSProvider.FormatedMode.NoneFormat);
             vSmsGenerator = new SMSGenerator(1000);
             
             vSubscribeMobPhone = new SubscribeMobPhone(vSmsGenerator.Subscribe);
@@ -137,24 +134,14 @@ namespace PLDD.Lab3.SMSProvider
             vKickOffSmsGenerator.Invoke(this, null);
         }
 
-        private void initFormatDelegatHandlers() {
-            vFormatFunc = new Func<string, string>[] {
-                (text) => text,
-                (text) => $"[{DateTime.Now}] {text}",
-                (text) => $"{text} [{DateTime.Now}]",
-                (text) => $"{text.ToLower()}",
-                (text) => $"{text.ToUpper()}"
-            };
-        }
-
         private void OnSmsReceived(string message) {
             if( InvokeRequired ) {
                 Invoke(new SMSProvider.SMSRecievedDelegate(OnSmsReceived), message);
                 return;  
             }
 
-            if ( vFormatMessage != null ) {
-                var formatedMessage = this.vFormatMessage(message);
+            if ( vMobPhone != null ) {
+                var formatedMessage = vMobPhone.SmsProvider.RaiseFormatMessageEvent(message);
                 richTextBox1.AppendText($"{formatedMessage}{Environment.NewLine}");
             }
         }

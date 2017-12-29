@@ -11,18 +11,34 @@ namespace PLDD.Lab3.SMSProvider
             initDelegates();
         }
 
+        /// <summary>
+        /// used to chose the format mode of the received messages.
+        /// by default the formated mode is none. That is no alteration to
+        /// the generated sms message has not been provided.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
             ComboBox combobox = sender as ComboBox;
             if( combobox != null ) {
-                vFormatMessage = new FormatMessage(vFormatFunc[combobox.SelectedIndex]);
+                vMobPhone?.SmsProvider.SetFormatMode(combobox.SelectedIndex);
             }
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            vFormatMessage =  vFormatMessage ?? new FormatMessage(vFormatFunc[0]);
+        /// <summary>
+        /// used to subscribe "mobile phone" to the sms service.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e) {    
             vSubscribeMobPhone(vMobPhone);
         }
 
+        /// <summary>
+        /// unsubscribe "mobile phone" off the sms service.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e) {
             vUnsubscribeMobPhone();
         }
@@ -32,6 +48,11 @@ namespace PLDD.Lab3.SMSProvider
             richTextBox1.ScrollToCaret();
         }
 
+        /// <summary>
+        /// simply clear rich text box.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e) {
             richTextBox1.Clear();
         }

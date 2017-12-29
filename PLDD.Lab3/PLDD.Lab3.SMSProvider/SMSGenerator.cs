@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace PLDD.Lab3.SMSProvider
 {
+    /// <summary>
+    /// Generate SMS messages with given interval.
+    /// </summary>
     public class SMSGenerator : System.Timers.Timer
     {
         private int vMessageCnt = 0;

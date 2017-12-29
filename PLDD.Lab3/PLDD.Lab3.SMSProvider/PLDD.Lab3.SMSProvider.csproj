@@ -53,6 +53,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="MobilePhone.cs" />
+    <Compile Include="MockReceiver.cs" />
     <Compile Include="SMSGenerator.cs">
       <SubType>Component</SubType>
     </Compile>
