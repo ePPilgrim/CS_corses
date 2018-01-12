@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{17B891D8-2CE9-4C64-86CC-B8E7269F86DB}</ProjectGuid>
+    <ProjectGuid>{0D8D3DCF-6DF7-430F-A8A4-961679DFA432}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PLDD.Lab3.SMSProviderTests</RootNamespace>
-    <AssemblyName>PLDD.Lab3.SMSProviderTests</AssemblyName>
+    <RootNamespace>PLDD.Lab4.MobilePhoneTests</RootNamespace>
+    <AssemblyName>PLDD.Lab4.MobilePhoneTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -52,12 +52,12 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SMSProviderTests.cs" />
+    <Compile Include="SimCorpMobilePhoneTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PLDD.Lab4.SMSProvider\PLDD.Lab4.SMSProvider.csproj">
-      <Project>{9E059F83-C850-4C97-9218-97D2665BB58B}</Project>
-      <Name>PLDD.Lab3.SMSProvider</Name>
+    <ProjectReference Include="..\PLDD.Lab4.MobilePhone\PLDD.Lab4.MobilePhone.csproj">
+      <Project>{50A6229E-54F6-4446-8278-3D5FFE684FEA}</Project>
+      <Name>PLDD.Lab4.MobilePhone</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

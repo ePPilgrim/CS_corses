@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PLDD.Lab3.SMSProviderTests")]
+[assembly: AssemblyTitle("PLDD.Lab4.MobilePhoneTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PLDD.Lab3.SMSProviderTests")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyProduct("PLDD.Lab4.MobilePhoneTests")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("17b891d8-2ce9-4c64-86cc-b8e7269f86db")]
+[assembly: Guid("0d8d3dcf-6df7-430f-a8a4-961679dfa432")]
 
 // Version information for an assembly consists of the following four values:
 //

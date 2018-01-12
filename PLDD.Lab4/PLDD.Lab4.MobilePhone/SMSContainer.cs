@@ -21,16 +21,12 @@ namespace PLDD.Lab4.MobilePhone
 
         public void AddMessage(Message message) {
             vSMSMessages.Add(message);
-            if( MessageIsAdded != null ) {
-                MessageIsAdded(message);
-            }
+            MessageIsAdded?.Invoke(message);
         }
 
         public void RemoveMessage(Message message) {
             vSMSMessages.Remove(message);
-            if( MessageIsRemove != null ) {
-                MessageIsRemove(message);
-            }
+            MessageIsRemove?.Invoke(message);
         }
 
         /// <summary>

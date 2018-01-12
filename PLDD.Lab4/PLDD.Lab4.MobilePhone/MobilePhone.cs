@@ -39,8 +39,8 @@ namespace PLDD.Lab4.MobilePhone
             var quiery = from message in vSmsMessages.SMSMessages
                          where (message.PhoneNumber == phoneNumber) &&
                                 (message.Text.Contains(includedText)
-                               || message.ReceivingTime <= toDate
-                               || message.ReceivingTime >= fromDate)
+                               || (message.ReceivingTime <= toDate
+                               && message.ReceivingTime >= fromDate))
                          orderby message.ReceivingTime
                          select message;
             return quiery;
@@ -57,5 +57,11 @@ namespace PLDD.Lab4.MobilePhone
         public void SetMessageIsAddedDelegat(MessageIsAddDelegate messageIsAddedDelegate) { vSmsMessages.MessageIsAdded += messageIsAddedDelegate; }
 
         public void SetMessageIsRemoveDelegat(MessageIsRemoveDelegate messageIsRemoveDelegate) { vSmsMessages.MessageIsRemove += messageIsRemoveDelegate; }
+
+        /// <summary>
+        /// used for unit tests purpose
+        /// </summary>
+        public void CleareMessageStorage() { vSmsMessages.SMSMessages.Clear(); }
+        public void AddMessage(Message message) { vSmsMessages.AddMessage(message);  }
     }
 }

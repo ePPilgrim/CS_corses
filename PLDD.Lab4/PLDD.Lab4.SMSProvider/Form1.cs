@@ -47,5 +47,6 @@ namespace PLDD.Lab4.MobilePhoneOutput
             DateTimePicker dtpick = sender as DateTimePicker;
             if ( dtpick != null ) { ShowMessages(); }
         }
+
     }
 }
