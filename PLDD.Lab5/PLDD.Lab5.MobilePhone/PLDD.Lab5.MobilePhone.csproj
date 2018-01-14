@@ -41,11 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Battery.cs" />
+    <Compile Include="BatteryChargedByTask.cs" />
+    <Compile Include="BatteryChargedByThread.cs" />
+    <Compile Include="BatteryFactory.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MobilePhone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SMSContainer.cs" />
     <Compile Include="SMSProvider.cs" />
+    <Compile Include="SMSProviderByTask.cs" />
+    <Compile Include="SMSProviderByThread.cs" />
+    <Compile Include="JobType.cs" />
+    <Compile Include="SMSProviderFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

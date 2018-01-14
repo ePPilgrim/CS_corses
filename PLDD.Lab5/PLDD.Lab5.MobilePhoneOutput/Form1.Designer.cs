@@ -1,6 +1,5 @@
 ﻿using PLDD.Lab5.MobilePhone;
 using System;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace PLDD.Lab5.MobilePhoneOutput
@@ -20,21 +19,13 @@ namespace PLDD.Lab5.MobilePhoneOutput
             if (disposing && (components != null)) {
                 components.Dispose();
             }
-            vSmsGeneratingThread.Abort();
-            vUnchargeMobPhoneThread.Abort();
-            vChargeMobPhoneThread.Abort();
+            vMobPhone.Dispose();
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
         private SimCorpMobilePhone vMobPhone = null;
-
-        private Thread vSmsGeneratingThread = null;
-
-        private Thread vChargeMobPhoneThread = null;
-
-        private Thread vUnchargeMobPhoneThread = null;
 
         private System.Windows.Forms.ComboBox comboBox1;
 
@@ -136,7 +127,7 @@ namespace PLDD.Lab5.MobilePhoneOutput
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(131, 20);
             this.dateTimePicker2.TabIndex = 9;
-            this.dateTimePicker2.Value = new System.DateTime(2018, 1, 13, 16, 2, 13, 66);
+            this.dateTimePicker2.Value = DateTime.Now.AddDays(1) ;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // FromDate
@@ -243,7 +234,7 @@ namespace PLDD.Lab5.MobilePhoneOutput
             this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             this.progressBar1.Minimum = 0;
             this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 100;
+            this.progressBar1.Value = 50;
             // 
             // Form1
             // 
@@ -275,20 +266,12 @@ namespace PLDD.Lab5.MobilePhoneOutput
         }
 
         private void initDelegates() {
-            vMobPhone = new SimCorpMobilePhone();
+            vMobPhone = new SimCorpMobilePhone(JobType.Task, currentCharge:50,maxCharge:100);
+            vMobPhone.SetEllapsedTimes(generatedSmsTime:3000, chargeBatteryTime:1000, unchargeBatteryTime:3000);
             vMobPhone.SetFormatMode(0);
             vMobPhone.SetMessageIsAddedDelegat(OnListViewMessageAdded);
             vMobPhone.SetMessageIsRemoveDelegat(OnListViewMessageRemoved);
             vMobPhone.SetBatteryChargeChangeDelegat(OnChargeIsChanged);
-            
-            vSmsGeneratingThread = new Thread(vMobPhone.SetGeneratingThread());
-            vSmsGeneratingThread.Start();
-
-            vChargeMobPhoneThread = new Thread(vMobPhone.SetChargThread());
-            vChargeMobPhoneThread.Start();
-
-            vUnchargeMobPhoneThread = new Thread(vMobPhone.SetUnchargeThread());
-            vUnchargeMobPhoneThread.Start();
         }
 
         private void OnChargeIsChanged(int charge)
@@ -305,10 +288,10 @@ namespace PLDD.Lab5.MobilePhoneOutput
         {
             var smsPhoneNumGrouping = vMobPhone.GroupingByPhoneNumber();
 
-             foreach (var phoneNumber in smsPhoneNumGrouping)
-             {
-                    comboBox2.Items.Add(phoneNumber);
-             }
+            foreach (var phoneNumber in smsPhoneNumGrouping)
+            {
+                comboBox2.Items.Add(phoneNumber);
+            }
         }
 
         private void OnListViewMessageAdded(PLDD.Lab5.MobilePhone.Message addedMessage) {

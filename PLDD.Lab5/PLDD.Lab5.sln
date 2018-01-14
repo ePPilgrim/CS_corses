@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLDD.Lab5.MobilePhone", "PL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLDD.Lab5.MobilePhoneOutput", "PLDD.Lab5.MobilePhoneOutput\PLDD.Lab5.MobilePhoneOutput.csproj", "{9E059F83-C850-4C97-9218-97D2665BB58B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLDD.Lab5.MobilePhoneTests", "PLDD.Lab5.MobilePhoneTests\PLDD.Lab5.MobilePhoneTests.csproj", "{5B0B3020-D221-4914-9660-150C869624B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9E059F83-C850-4C97-9218-97D2665BB58B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E059F83-C850-4C97-9218-97D2665BB58B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E059F83-C850-4C97-9218-97D2665BB58B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B0B3020-D221-4914-9660-150C869624B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B0B3020-D221-4914-9660-150C869624B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B0B3020-D221-4914-9660-150C869624B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B0B3020-D221-4914-9660-150C869624B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

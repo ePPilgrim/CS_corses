@@ -17,7 +17,7 @@ namespace PLDD.Lab5.MobilePhone
             }
         }
 
-        public SMSContainer () { InitializeWithSomeSmsRecords(); }
+        public SMSContainer () { InitializeWithSomeSmsRecords();  }
 
         public void AddMessage(Message message) {
             vSMSMessages.Add(message);
@@ -32,12 +32,14 @@ namespace PLDD.Lab5.MobilePhone
         /// <summary>
         /// Only for test pupropse
         /// </summary>
-        private void InitializeWithSomeSmsRecords() {
+        private void InitializeWithSomeSmsRecords()
+        {
             vSMSMessages = new List<Message>(99);
-            for(int i = 0; i < 99; ++ i) { vSMSMessages.Add(new Message()); }
+            for (int i = 0; i < 99; ++i) { vSMSMessages.Add(new Message()); }
 
             var date = new System.DateTime(2000, 1, 1);
-            for (int i = 0; i < 99; i += 3) {
+            for (int i = 0; i < 99; i += 3)
+            {
                 vSMSMessages[i].PhoneNumber = 11111111;
                 vSMSMessages[i].UserName = "Friend_1";
                 vSMSMessages[i].ReceivingTime = date.AddDays(i);

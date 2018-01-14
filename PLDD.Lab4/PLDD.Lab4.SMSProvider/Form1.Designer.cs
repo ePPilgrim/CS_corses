@@ -123,7 +123,7 @@ namespace PLDD.Lab4.MobilePhoneOutput
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(131, 20);
             this.dateTimePicker2.TabIndex = 9;
-            this.dateTimePicker2.Value = new System.DateTime(2018, 1, 13, 16, 2, 13, 66);
+            this.dateTimePicker2.Value = DateTime.Now.AddDays(1);
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // FromDate

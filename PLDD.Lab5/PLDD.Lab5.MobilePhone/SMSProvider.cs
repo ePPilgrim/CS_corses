@@ -9,7 +9,7 @@ namespace PLDD.Lab5.MobilePhone
     /// <summary>
     /// Provide base delegate functional for lab3. 
     /// </summary>
-    internal class SMSProvider
+    internal abstract class SMSProvider : IDisposable
     {
         /// <summary>
         /// Used to index the array of the relative formating functions.
@@ -67,34 +67,33 @@ namespace PLDD.Lab5.MobilePhone
 
         public void SetFormatMode(FormatedMode mode) { SetFormatMode((int)mode); }
 
-        public void GenerateSmsMessages() {
-            for(;;)
+        public virtual void Dispose() { }
+
+        protected void GenerateSmsMessages()
+        {
+            MessageCnt++;
+            var message = new Message();
+            Random rnd = new Random();
+            switch (rnd.Next(0, 3))
             {
-                StartStopEvent.WaitOne();
-                Thread.Sleep(EllapsedTime);
-                MessageCnt++;
-                var message = new Message();
-                Random rnd = new Random();
-                switch (rnd.Next(0, 3))
-                {
-                    case 0:
-                        message.PhoneNumber = 11111111;
-                        message.UserName = "Friend_1";
-                        break;
-                    case 1:
-                        message.PhoneNumber = 22222222;
-                        message.UserName = "Friend_2";
-                        break;
-                    case 2:
-                        message.PhoneNumber = 33333333;
-                        message.UserName = "Friend_3";
-                        break;
-                }
-                message.Text = $"Generated message #{MessageCnt} from {message.PhoneNumber}.";
-                RaiseSMSReceivedEvent(message);
+                case 0:
+                    message.PhoneNumber = 11111111;
+                    message.UserName = "Friend_1";
+                    break;
+                case 1:
+                    message.PhoneNumber = 22222222;
+                    message.UserName = "Friend_2";
+                    break;
+                case 2:
+                    message.PhoneNumber = 33333333;
+                    message.UserName = "Friend_3";
+                    break;
             }
+            message.Text = $"Generated message #{MessageCnt} from {message.PhoneNumber}.";
+            RaiseSMSReceivedEvent(message);
         }
 
+        protected abstract void DoWork();
 
         private void initFormatedFuncArray() {
             FormatingFunc[(int)FormatedMode.NoneFormat] = (text) => text;
