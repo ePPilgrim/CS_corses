@@ -31,7 +31,7 @@ namespace PLDD.Lab5.MobilePhone
 
         public void DecreaseCharge() {
             for (;;) {
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
                 lock (LockObject) {
                     if ( vCurrentCharge > 0 ) {
                         vCurrentCharge--;

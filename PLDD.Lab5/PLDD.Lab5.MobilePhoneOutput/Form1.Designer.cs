@@ -293,7 +293,12 @@ namespace PLDD.Lab5.MobilePhoneOutput
 
         private void OnChargeIsChanged(int charge)
         {
-            progressBar1.Value = charge;
+            if ( InvokeRequired ) {
+                Invoke(new ChargeStateChangeDelegate(OnChargeIsChanged), charge);
+                return;
+            }
+
+            if (vMobPhone != null) { progressBar1.Value = charge; }
         }
 
         private void initPhoneNumberComboBox()
