@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLDD.Lab5.MobilePhone", "PLDD.Lab5.MobilePhone\PLDD.Lab5.MobilePhone.csproj", "{50A6229E-54F6-4446-8278-3D5FFE684FEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLDD.Lab5.MobilePhoneOutput", "PLDD.Lab5.MobilePhoneOutput\PLDD.Lab5.MobilePhoneOutput.csproj", "{9E059F83-C850-4C97-9218-97D2665BB58B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50A6229E-54F6-4446-8278-3D5FFE684FEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50A6229E-54F6-4446-8278-3D5FFE684FEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50A6229E-54F6-4446-8278-3D5FFE684FEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50A6229E-54F6-4446-8278-3D5FFE684FEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E059F83-C850-4C97-9218-97D2665BB58B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E059F83-C850-4C97-9218-97D2665BB58B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E059F83-C850-4C97-9218-97D2665BB58B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E059F83-C850-4C97-9218-97D2665BB58B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
