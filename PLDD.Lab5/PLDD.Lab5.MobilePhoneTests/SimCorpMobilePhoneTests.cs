@@ -59,12 +59,16 @@ namespace PLDD.Lab5.SMSProvider.Tests
 
             //uncharging is activated automaticly but with grate amount of ellapsed time.
             //charging is activated too with period of 1 ms. 
+            bool checkFlag = true;
             Thread.Sleep(1000 * ellapsedTime);
-            Assert.AreEqual(mob.GetCurrentStateOfCharge() <= max_charge, true);
+            checkFlag &= mob.GetCurrentStateOfCharge() <= max_charge;
             Thread.Sleep(2000 * ellapsedTime);
-            Assert.AreEqual(mob.GetCurrentStateOfCharge() <= max_charge, true);
+            checkFlag &= mob.GetCurrentStateOfCharge() <= max_charge;
             Thread.Sleep(3000 * ellapsedTime);
-            Assert.AreEqual(mob.GetCurrentStateOfCharge() <= max_charge, true);
+            checkFlag &= mob.GetCurrentStateOfCharge() <= max_charge;
+
+            Assert.AreEqual(checkFlag, true);
+
             mob.Dispose();
         }
 
@@ -78,17 +82,20 @@ namespace PLDD.Lab5.SMSProvider.Tests
             mob.StartCharging();
 
             //uncharging is activated automaticly but with grate amount of ellapsed time.
-            //charging is activated too with period of 1 ms. 
+            //charging is activated too with period of 1 ms.
+            bool checkFlag = true; 
             Thread.Sleep(1000 * ellapsedTime);
-            Assert.AreEqual(mob.GetCurrentStateOfCharge() <= max_charge, true);
+            checkFlag &= mob.GetCurrentStateOfCharge() <= max_charge;
             Thread.Sleep(2000 * ellapsedTime);
-            Assert.AreEqual(mob.GetCurrentStateOfCharge() <= max_charge, true);
+            checkFlag &= mob.GetCurrentStateOfCharge() <= max_charge;
             Thread.Sleep(3000 * ellapsedTime);
-            Assert.AreEqual(mob.GetCurrentStateOfCharge() <= max_charge, true);
+            checkFlag &= mob.GetCurrentStateOfCharge() <= max_charge;
+
+            Assert.AreEqual(checkFlag, true);
         }
 
         [TestMethod()]
-        public void SimCorpMobilePhoneTestChargeBeingDecreaseByThread()
+        public void SimCorpMobilePhoneTestChargeBeingDecreaseByThreadVarifyOutputCount()
         {
             var genValueOfCharge = new List<int>();
             int max_charge = 1000;
@@ -100,17 +107,39 @@ namespace PLDD.Lab5.SMSProvider.Tests
             //uncharging is activated automaticly. So invoke mention above delegate;
             //charging is not activated so it is exclude from the charging process.
             Thread.Sleep(5000);
-            Assert.AreEqual(genValueOfCharge.Count() > 0, true);
             
-            for(int i = 1; i < genValueOfCharge.Count(); ++ i)
-            {
-                Assert.AreEqual((genValueOfCharge[i] - genValueOfCharge[i - 1]) < 0, true);
-            }
+            Assert.AreEqual(genValueOfCharge.Count() > 0, true);
+
             mob.Dispose();
         }
 
         [TestMethod()]
-        public void SimCorpMobilePhoneTestChargeBeingDecreaseByTask()
+        public void SimCorpMobilePhoneTestChargeBeingDecreaseByThreadVarifyOutputElements()
+        {
+            var genValueOfCharge = new List<int>();
+            int max_charge = 1000;
+            SimCorpMobilePhone mob = new SimCorpMobilePhone(JobType.Thread, currentCharge: max_charge, maxCharge: max_charge);
+            mob.SetBatteryChargeChangeDelegat((e) => genValueOfCharge.Add(e));
+            int ellapsedTime = 1;//ms - generate uncharge event every 1 ms.
+            mob.SetEllapsedTimes(unchargeBatteryTime: ellapsedTime);
+
+            //uncharging is activated automaticly. So invoke mention above delegate;
+            //charging is not activated so it is exclude from the charging process.
+            Thread.Sleep(7000);
+
+            bool checkFlag = true;
+            for (int i = 1; i < genValueOfCharge.Count(); ++i)
+            {
+                checkFlag &= (genValueOfCharge[i] - genValueOfCharge[i - 1]) < 0;
+            }
+
+            Assert.AreEqual(checkFlag, true);
+
+            mob.Dispose();
+        }
+
+        [TestMethod()]
+        public void SimCorpMobilePhoneTestChargeBeingDecreaseByTaskVerifyOutputCount()
         {
             var genValueOfCharge = new List<int>();
             int max_charge = 1000;
@@ -123,11 +152,29 @@ namespace PLDD.Lab5.SMSProvider.Tests
             //charging is not activated so it is exclude from the charging process.
             Thread.Sleep(5000);
             Assert.AreEqual(genValueOfCharge.Count() > 0, true);
+        }
+
+        [TestMethod()]
+        public void SimCorpMobilePhoneTestChargeBeingDecreaseByTaskVerifyOutputElements()
+        {
+            var genValueOfCharge = new List<int>();
+            int max_charge = 1000;
+            SimCorpMobilePhone mob = new SimCorpMobilePhone(JobType.Task, currentCharge: max_charge, maxCharge: max_charge);
+            mob.SetBatteryChargeChangeDelegat((e) => genValueOfCharge.Add(e));
+            int ellapsedTime = 1;//ms - generate uncharge event every 1 ms.
+            mob.SetEllapsedTimes(unchargeBatteryTime: ellapsedTime);
+
+            //uncharging is activated automaticly. So invoke mention above delegate;
+            //charging is not activated so it is exclude from the charging process.
+            Thread.Sleep(7000);
+            bool checkFlag = true;
 
             for (int i = 1; i < genValueOfCharge.Count(); ++i)
             {
-                Assert.AreEqual((genValueOfCharge[i] - genValueOfCharge[i - 1]) < 0, true);
+                checkFlag &= (genValueOfCharge[i] - genValueOfCharge[i - 1]) < 0;
             }
+
+            Assert.AreEqual(checkFlag, true);
         }
     }
 }
