@@ -20,7 +20,7 @@ namespace PLDD.Lab3.SMSProvider.Tests
         }
 
         [TestMethod()]
-        public void FileterAndTestByDate()
+        public void FileterAndTestByDateCaseLengthValidation()
         {
             SimCorpMobilePhone mob = new SimCorpMobilePhone();
             mob.CleareMessageStorage();
@@ -38,6 +38,30 @@ namespace PLDD.Lab3.SMSProvider.Tests
                 mob.AddMessage(msg);
             }
 
+            var filteredmessage = mob.FileterAnd(4, "", new DateTime(2017, 1, 1), new DateTime(2018, 1, 1)).ToList();
+
+            Assert.AreEqual(filteredmessage.Count, 2);
+        }
+
+        [TestMethod()]
+        public void FileterAndTestByDateVerifyOutputElements()
+        {
+            SimCorpMobilePhone mob = new SimCorpMobilePhone();
+            mob.CleareMessageStorage();
+            var messages = new List<Message>
+            {
+                new Message { UserName = "Name1", PhoneNumber = 1, ReceivingTime = new DateTime(2014, 1, 1), Text = "Message from Name1" },
+                new Message { UserName = "Name2", PhoneNumber = 2, ReceivingTime = new DateTime(2015, 1, 1), Text = "Message from Name2" },
+                new Message { UserName = "Name3", PhoneNumber = 3, ReceivingTime = new DateTime(2016, 1, 1), Text = "Message from Name3" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2017, 1, 1), Text = "Message from Name4" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2018, 1, 1), Text = "Message from Name4" },
+            };
+
+            foreach (var msg in messages)
+            {
+                mob.AddMessage(msg);
+            }
+
             var validfiltredmessage = new List<Message>
             {
                 new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2017, 1, 1), Text = "Message from Name4" },
@@ -46,16 +70,36 @@ namespace PLDD.Lab3.SMSProvider.Tests
 
             var filteredmessage = mob.FileterAnd(4, "", new DateTime(2017, 1, 1), new DateTime(2018, 1, 1)).ToList();
 
-            Assert.AreEqual(filteredmessage.Count, 2);
-
-            for(int i = 0; i < 2; ++ i)
-            {
-                Assert.AreEqual(CompareMessages(filteredmessage[i], validfiltredmessage[i]), true);
-            }
+            bool checkFlag = CompareMessages(filteredmessage[0], validfiltredmessage[0]) && CompareMessages(filteredmessage[1], validfiltredmessage[1]);
+            Assert.AreEqual(checkFlag, true);
         }
 
         [TestMethod()]
-        public void FileterAndTestByIncludedText()
+        public void FileterAndTestByIncludedTextVarifyOutputLenght()
+        {
+            SimCorpMobilePhone mob = new SimCorpMobilePhone();
+            mob.CleareMessageStorage();
+            var messages = new List<Message>
+            {
+                new Message { UserName = "Name1", PhoneNumber = 1, ReceivingTime = new DateTime(2014, 1, 1), Text = "Message from Name1" },
+                new Message { UserName = "Name2", PhoneNumber = 2, ReceivingTime = new DateTime(2015, 1, 1), Text = "Message from Name2" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2016, 1, 1), Text = "Message is not from Name3" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2017, 1, 1), Text = "Message from Name4" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2018, 1, 1), Text = "Message from Name4" },
+            };
+
+            foreach (var msg in messages)
+            {
+                mob.AddMessage(msg);
+            }
+
+            var filteredmessage = mob.FileterAnd(4, "Name4", new DateTime(2012, 1, 1), new DateTime(2018, 1, 1)).ToList();
+
+            Assert.AreEqual(filteredmessage.Count, 2);
+        }
+
+        [TestMethod()]
+        public void FileterAndTestByIncludedTextVarifyOutputElements()
         {
             SimCorpMobilePhone mob = new SimCorpMobilePhone();
             mob.CleareMessageStorage();
@@ -81,16 +125,36 @@ namespace PLDD.Lab3.SMSProvider.Tests
 
             var filteredmessage = mob.FileterAnd(4, "Name4", new DateTime(2012, 1, 1), new DateTime(2018, 1, 1)).ToList();
 
-            Assert.AreEqual(filteredmessage.Count, 2);
-
-            for (int i = 0; i < 2; ++i)
-            {
-                Assert.AreEqual(CompareMessages(filteredmessage[i], validfiltredmessage[i]), true);
-            }
+            bool checkFlag = CompareMessages(filteredmessage[0], validfiltredmessage[0]) && CompareMessages(filteredmessage[1], validfiltredmessage[1]);
+            Assert.AreEqual(checkFlag, true);
         }
 
         [TestMethod()]
-        public void FileterAndTestByPhoneNumber()
+        public void FileterAndTestByPhoneNumberVarifyOutputLength()
+        {
+            SimCorpMobilePhone mob = new SimCorpMobilePhone();
+            mob.CleareMessageStorage();
+            var messages = new List<Message>
+            {
+                new Message { UserName = "Name1", PhoneNumber = 1, ReceivingTime = new DateTime(2014, 1, 1), Text = "Message from Name1" },
+                new Message { UserName = "Name2", PhoneNumber = 2, ReceivingTime = new DateTime(2015, 1, 1), Text = "Message from Name2" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2016, 1, 1), Text = "Message is not from Name3" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2017, 1, 1), Text = "Message from Name4" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2018, 1, 1), Text = "Message from Name4" },
+            };
+
+            foreach (var msg in messages)
+            {
+                mob.AddMessage(msg);
+            }
+
+            var filteredmessage = mob.FileterAnd(1, "", new DateTime(2012, 1, 1), new DateTime(2018, 1, 1)).ToList();
+
+            Assert.AreEqual(filteredmessage.Count, 1);
+        }
+
+        [TestMethod()]
+        public void FileterAndTestByPhoneNumberVerityOutputElements()
         {
             SimCorpMobilePhone mob = new SimCorpMobilePhone();
             mob.CleareMessageStorage();
@@ -114,8 +178,6 @@ namespace PLDD.Lab3.SMSProvider.Tests
             };
 
             var filteredmessage = mob.FileterAnd(1, "", new DateTime(2012, 1, 1), new DateTime(2018, 1, 1)).ToList();
-
-            Assert.AreEqual(filteredmessage.Count, 1);
 
             Assert.AreEqual(CompareMessages(filteredmessage[0], validfiltredmessage[0]), true);
         }
@@ -193,7 +255,31 @@ namespace PLDD.Lab3.SMSProvider.Tests
         }
 
         [TestMethod()]
-        public void FileterOrTestByDate()
+        public void FileterOrTestByDateVarifyOutputLength()
+        {
+            SimCorpMobilePhone mob = new SimCorpMobilePhone();
+            mob.CleareMessageStorage();
+            var messages = new List<Message>
+            {
+                new Message { UserName = "Name1", PhoneNumber = 1, ReceivingTime = new DateTime(2014, 1, 1), Text = "Message from Name1" },
+                new Message { UserName = "Name2", PhoneNumber = 2, ReceivingTime = new DateTime(2015, 1, 1), Text = "Message from Name2" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2016, 1, 1), Text = "Message is not from Name3" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2017, 1, 1), Text = "Message from Name4" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2018, 1, 1), Text = "Message from Name4" },
+            };
+
+            foreach (var msg in messages)
+            {
+                mob.AddMessage(msg);
+            }
+
+            var filteredmessage = mob.FileterOr(4, "is not from Name3", new DateTime(2017, 1, 1), new DateTime(2018, 1, 1)).ToList();
+
+            Assert.AreEqual(filteredmessage.Count, 3);
+        }
+
+        [TestMethod()]
+        public void FileterOrTestByDateVarifyFirstOutputElement()
         {
             SimCorpMobilePhone mob = new SimCorpMobilePhone();
             mob.CleareMessageStorage();
@@ -226,10 +312,38 @@ namespace PLDD.Lab3.SMSProvider.Tests
             {
                 Assert.AreEqual(CompareMessages(filteredmessage[i], validfiltredmessage[i]), true);
             }
+            bool checkFlag = CompareMessages(filteredmessage[0], validfiltredmessage[0]) &&
+                             CompareMessages(filteredmessage[1], validfiltredmessage[1]) &&
+                             CompareMessages(filteredmessage[2], validfiltredmessage[2]);
+            Assert.AreEqual(checkFlag, true);
         }
 
         [TestMethod()]
-        public void FileterOrTestByIncludedText()
+        public void FileterOrTestByIncludedTextVerifyOutputLength()
+        {
+            SimCorpMobilePhone mob = new SimCorpMobilePhone();
+            mob.CleareMessageStorage();
+            var messages = new List<Message>
+            {
+                new Message { UserName = "Name1", PhoneNumber = 1, ReceivingTime = new DateTime(2014, 1, 1), Text = "Message from Name1" },
+                new Message { UserName = "Name2", PhoneNumber = 2, ReceivingTime = new DateTime(2015, 1, 1), Text = "Message from Name2" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2016, 1, 1), Text = "Message is not from Name3" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2017, 1, 1), Text = "Message from Name4" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2018, 1, 1), Text = "Message from Name4" },
+            };
+
+            foreach (var msg in messages)
+            {
+                mob.AddMessage(msg);
+            }
+
+            var filteredmessage = mob.FileterOr(4, "is not from Name3", new DateTime(2019, 1, 1), new DateTime(2020, 1, 1)).ToList();
+
+            Assert.AreEqual(filteredmessage.Count, 1);
+        }
+
+        [TestMethod()]
+        public void FileterOrTestByIncludedTextVarifyOutputElement()
         {
             SimCorpMobilePhone mob = new SimCorpMobilePhone();
             mob.CleareMessageStorage();
@@ -253,8 +367,6 @@ namespace PLDD.Lab3.SMSProvider.Tests
             };
 
             var filteredmessage = mob.FileterOr(4, "is not from Name3", new DateTime(2019, 1, 1), new DateTime(2020, 1, 1)).ToList();
-
-            Assert.AreEqual(filteredmessage.Count, 1);
 
             Assert.AreEqual(CompareMessages(filteredmessage[0], validfiltredmessage[0]), true);
         }
@@ -285,7 +397,7 @@ namespace PLDD.Lab3.SMSProvider.Tests
         }
 
         [TestMethod()]
-        public void GroupingByPhoneNumberTest()
+        public void GroupingByPhoneNumberTestVeryfyOutputLength()
         {
             SimCorpMobilePhone mob = new SimCorpMobilePhone();
             mob.CleareMessageStorage();
@@ -306,11 +418,37 @@ namespace PLDD.Lab3.SMSProvider.Tests
             var groupedKeys = mob.GroupingByPhoneNumber().ToList();
 
             Assert.AreEqual(groupedKeys.Count, 5);
+        }
+
+        [TestMethod()]
+        public void GroupingByPhoneNumberTestVerifyOutputElements()
+        {
+            SimCorpMobilePhone mob = new SimCorpMobilePhone();
+            mob.CleareMessageStorage();
+            var messages = new List<Message>
+            {
+                new Message { UserName = "Name1", PhoneNumber = 1, ReceivingTime = new DateTime(2014, 1, 1), Text = "Message from Name1" },
+                new Message { UserName = "Name2", PhoneNumber = 2, ReceivingTime = new DateTime(2015, 1, 1), Text = "Message from Name2" },
+                new Message { UserName = "Name3", PhoneNumber = 3, ReceivingTime = new DateTime(2016, 1, 1), Text = "Message from Name3" },
+                new Message { UserName = "Name4", PhoneNumber = 4, ReceivingTime = new DateTime(2017, 1, 1), Text = "Message from Name4" },
+                new Message { UserName = "Name5", PhoneNumber = 5, ReceivingTime = new DateTime(2018, 1, 1), Text = "Message from Name5" },
+            };
+
+            foreach (var msg in messages)
+            {
+                mob.AddMessage(msg);
+            }
+
+            var groupedKeys = mob.GroupingByPhoneNumber().ToList();
+
+            bool checkFlag = true;
 
             for (int i = 0; i < 5; ++i)
             {
-                Assert.AreEqual(groupedKeys[i], i + 1);
+                checkFlag &= (groupedKeys[i] == i + 1);
             }
+
+            Assert.AreEqual(checkFlag, true);
         }
     }
 }
