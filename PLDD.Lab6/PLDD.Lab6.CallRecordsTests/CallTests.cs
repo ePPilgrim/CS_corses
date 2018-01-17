@@ -29,11 +29,14 @@ namespace PLDD.Lab3.SMSProvider.Tests
             }
             list.Sort();
 
+            bool checkFlag = true;
             for(var i = 1; i < 1000; ++i)
             {
                 int diff = (list[i].CallTime - list[i - 1].CallTime).Minutes;
-                Assert.AreEqual(diff <= 0, true);
+                checkFlag &= diff <= 0;
             }
+
+            Assert.AreEqual(checkFlag, true);
         }
 
         [TestMethod()]

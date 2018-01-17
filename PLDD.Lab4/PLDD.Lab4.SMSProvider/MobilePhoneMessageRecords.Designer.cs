@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace PLDD.Lab4.MobilePhoneOutput
 {
-    partial class Form1
+    partial class MobilePhoneMessageRecords
     {
         /// <summary>
         /// Required designer variable.

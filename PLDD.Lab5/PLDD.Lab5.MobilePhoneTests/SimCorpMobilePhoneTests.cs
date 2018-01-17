@@ -20,12 +20,16 @@ namespace PLDD.Lab5.SMSProvider.Tests
 
             //uncharging is activated automaticly
             //charging is not activated.
+            bool checkFlag = true;
             Thread.Sleep(ellapsedTime);
-            Assert.AreEqual(mob.GetCurrentStateOfCharge(), 0);
+            checkFlag &= mob.GetCurrentStateOfCharge() == 0;
             Thread.Sleep(2*ellapsedTime);
-            Assert.AreEqual(mob.GetCurrentStateOfCharge(), 0);
+            checkFlag &= mob.GetCurrentStateOfCharge() == 0;
             Thread.Sleep(3*ellapsedTime);
-            Assert.AreEqual(mob.GetCurrentStateOfCharge(), 0);
+            checkFlag &= mob.GetCurrentStateOfCharge() == 0;
+
+            Assert.AreEqual(checkFlag, true);
+
             mob.Dispose();
         }
 
@@ -39,12 +43,16 @@ namespace PLDD.Lab5.SMSProvider.Tests
 
             //uncharging is activated automaticly.
             //charging is not activated.
+            bool checkFlag = true;
             Thread.Sleep(ellapsedTime);
-            Assert.AreEqual(mob.GetCurrentStateOfCharge(), 0);
+            checkFlag &= mob.GetCurrentStateOfCharge() == 0;
             Thread.Sleep(ellapsedTime);
-            Assert.AreEqual(mob.GetCurrentStateOfCharge(), 0);
+            checkFlag &= mob.GetCurrentStateOfCharge() == 0;
             Thread.Sleep(ellapsedTime);
-            Assert.AreEqual(mob.GetCurrentStateOfCharge(), 0);
+            checkFlag &= mob.GetCurrentStateOfCharge() == 0;
+
+            Assert.AreEqual(checkFlag, true);
+
             mob.Dispose();
         }
 
@@ -151,6 +159,7 @@ namespace PLDD.Lab5.SMSProvider.Tests
             //uncharging is activated automaticly. So invoke mention above delegate;
             //charging is not activated so it is exclude from the charging process.
             Thread.Sleep(5000);
+
             Assert.AreEqual(genValueOfCharge.Count() > 0, true);
         }
 

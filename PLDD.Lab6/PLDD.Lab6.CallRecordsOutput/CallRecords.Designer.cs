@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace PLDD.Lab6.CallRecordsOutput
 {
-    partial class Form1
+    partial class CallRecords
     {
         /// <summary>
         /// Required designer variable.

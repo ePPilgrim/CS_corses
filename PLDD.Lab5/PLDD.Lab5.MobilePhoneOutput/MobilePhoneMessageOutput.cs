@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace PLDD.Lab4.MobilePhoneOutput
+namespace PLDD.Lab5.MobilePhoneOutput
 {
-    public partial class Form1 : Form
+    public partial class MobilePhoneMessageOutput : Form
     {
-        public Form1()
+        public MobilePhoneMessageOutput()
         {
             InitializeComponent();
             initDelegates();
@@ -48,5 +48,33 @@ namespace PLDD.Lab4.MobilePhoneOutput
             if ( dtpick != null ) { ShowMessages(); }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if( btn != null ) { vMobPhone.StartSmsGeneration(); }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null) { vMobPhone.StopSmsGeneration(); }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null) { vMobPhone.StartCharging(); }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null) { vMobPhone.StopCharging(); }
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
